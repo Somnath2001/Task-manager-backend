@@ -35,6 +35,10 @@ app.use("/", authRoutes);
 app.use("/", userRoutes);
 app.use("/", todoRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hello i am online ");
+});
+
 //Port
 const port = process.env.PORT || 8088;
 
