@@ -2,7 +2,6 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
@@ -36,7 +35,7 @@ app.use("/", userRoutes);
 app.use("/", todoRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello i am online ");
+  res.send("Todo is Online✌️");
 });
 
 //Port

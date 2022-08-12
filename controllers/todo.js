@@ -14,8 +14,10 @@ exports.getTodoById = (req, res, next, id) => {
 };
 
 exports.createTodo = async (req, res) => {
+  console.log(req.body);
   try {
     const todo = new Todo(req.body);
+
     if (!todo.name || !todo.description || !todo.status || !todo.priority) {
       return res.status(400).json({
         error: "Please include all fields.",
@@ -36,6 +38,7 @@ exports.createTodo = async (req, res) => {
 
     res.json(todo);
   } catch (error) {
+    console.log(error);
     return res.status(400).json({
       error: "Failed to save todo in db",
     });
@@ -84,12 +87,12 @@ exports.getAllTodoByUserId = (req, res) => {
   Todo.find({ userId: req.profile._id }).exec((err, todos) => {
     if (err) {
       return res.status(400).json({
-        error: "NO TASK FOUND",
+        error: "NO TODO FOUND",
       });
     }
     if (todos.length === 0) {
       return res.status(400).json({
-        error: "No task found",
+        error: "No todo found",
       });
     }
     res.json(todos);

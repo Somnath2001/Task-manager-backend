@@ -16,7 +16,6 @@ const { getUserById } = require("../controllers/user");
 router.param("userId", getUserById);
 router.param("todoId", getTodoById);
 
-//all of actual routes
 //create route
 router.post("/todo/create/:userId", isSignedIn, isAuthenticated, createTodo);
 
